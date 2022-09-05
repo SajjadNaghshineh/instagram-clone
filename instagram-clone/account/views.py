@@ -75,7 +75,6 @@ def register(request):
             login(request, user)
             verify_code = randint(11111, 99999)
             request.session["verify"] = verify_code
-            print(request.session["verify"])
             send_sms(request, phone, verify_code)
             return redirect("verify")
     else:
@@ -107,8 +106,8 @@ def resend_sms(request):
         messages.success(request, "message is resent again")
     else:
         messages.error(request, "You must wait at least 2 minutes")
-        return redirect("verify")
-    
+    return redirect("verify")
+
 def send_sms(request, phone, code):
     API_KEY = info.API_KEY
     url = f"https://api.kavenegar.com/v1/{API_KEY}/sms/send.json?receptor={phone}&sender=2000500666&message={code}"
@@ -131,7 +130,7 @@ def user_follow(request):
             else:
                 Contact.objects.filter(user_from=request.user, user_to=user).delete()
                 create_action(request.user, "unfollow", user)
-            return JsonResponse({"status": "OK"})
+            return JsonResponse({"status":"Ok"})
         except:
-            return JsonResponse({"status": "error"})
-    return JsonResponse({"status": "error"})
+            return JsonResponse({"status":"error"})
+    return JsonResponse({"status":"error"})

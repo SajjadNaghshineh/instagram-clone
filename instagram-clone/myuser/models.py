@@ -5,18 +5,18 @@ from django.core.validators import RegexValidator
 class MyUserManager(BaseUserManager):
     def create_user(self, phone, username, email, first_name, last_name, password=None):
         if not phone:
-            raise ValueError("You must enter a phone number")
+            raise ValueError("You must enter phone number")
         if not username:
-            raise ValueError("You must enter your username")
+            raise ValueError("You must enter username")
         if not email:
-            raise ValueError("You must enter your email")
+            raise ValueError("You must enter Email address")
         
         user = self.model(
             phone=phone,
             email=self.normalize_email(email),
             username=username,
             first_name=first_name,
-            last_name=last_name
+            last_name=last_name,
         )
         
         user.set_password(password)
@@ -29,16 +29,15 @@ class MyUserManager(BaseUserManager):
             email=self.normalize_email(email),
             username=username,
             first_name=first_name,
-            last_name=last_name
+            last_name=last_name,
         )
-        
         user.is_staff = True
         user.is_admin = True
         user.is_superuser = True
         user.set_password(password)
         user.save(using=self._db)
         return user
-    
+
 class MyUser(AbstractBaseUser):
     phone = models.CharField(max_length=11, unique=True, validators=[RegexValidator(regex="\A(09)(0|1|2|3|9)[0-9]{7}\d\Z", message="phone number is not correct")])
     username = models.CharField(max_length=50, unique=True)
@@ -52,7 +51,7 @@ class MyUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    photo = models.ImageField(upload_to="users/%Y/%m/%d")
+    photo = models.ImageField(upload_to="users/%Y/%m/%d", default="users/WIN_20220520_23_18_07_Pro.jpg")
     date_of_birth = models.DateField(blank=True, null=True)
     bio = models.TextField(null=True, blank=True)
     following = models.ManyToManyField("self", through="Contact", related_name="followers", symmetrical=False)
