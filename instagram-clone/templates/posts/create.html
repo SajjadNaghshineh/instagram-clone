@@ -1,0 +1,9 @@
+<h1>Create form</h1>
+<hr>
+
+<form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="image" id="" class="swal2-input">
+    <textarea name="caption" class="swal2-input"></textarea>
+    <button type="submit">Create</button>
+</form>

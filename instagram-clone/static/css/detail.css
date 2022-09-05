@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+* {
+    box-sizing: border-box;
+    transition: all 0.15s ease-in-out;
+}
+a {
+    cursor: pointer;
+}
+body {
+    background: #fafafa;
+    margin: 50px auto;
+    padding: 0;
+    border: 0;
+    width: 800px;
+    max-width: 95%;
+    font-family: 'Cabin', sans-serif;
+}
+body section {
+    background: #fff;
+    position: relative;
+    border-radius: 2px;
+    margin: 10px 0;
+    padding: 0;
+    border: 1px solid #dbdbdb;
+}
+body section .header {
+    display: flex;
+    justify-content: space-between;
+}
+body section .header .user {
+    margin: 5px;
+    padding: 7px;
+    border: 0;
+}
+body section .header .param {
+    cursor: pointer;
+    margin: 6px;
+    padding: 6px;
+    border: 0;
+    border-radius: 4px;
+}
+body section .header .param:hover {
+    background: #000;
+}
+body section .img-container img {
+    width: 100%;
+}
+body section .like-checkbox {
+    display: none;
+}
+body section .toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+body section .toolbar .like, body section .toolbar .comment, body section .toolbar .transfer, body section .toolbar .signet {
+    margin: 8px;
+    padding: 0;
+    border: 0;
+}
+body section .toolbar .signet {
+    position: absolute;
+    right: 0;
+}
+body section .description {
+    margin: 6px;
+    padding: 6px;
+    border: 0;
+    font-size: 16px;
+}
+body section .description strong {
+    font-weight: bold;
+    font-size: 15px;
+}
+.check-like {
+    animation-duration: 0.2s;
+    animation-name: like;
+    fill: #1f81ba;
+}
+.check-path {
+    fill: #1f81ba;
+    background: #1f81ba;
+}
+@keyframes like {
+    from {
+        transform: scale(1);
+   }
+    75% {
+        transform: scale(1.4);
+   }
+    to {
+        transform: scale(1);
+   }
+}
+
+.active{
+    fill: red;
+}
+
+a{
+    text-decoration: none;
+    color: #050505;
+    font-weight: 100;
+}
+
+.comment-textarea{
+    width: 100%;
+    height: 10em;
+    border-color: #ccc;
+    resize: none;
+    border-radius: 4px;
+}
+.comment-submit{ 
+    width: 6em;
+    height: 3em;
+    background-color: royalblue;
+    color: seashell;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: bold;
+}
+.comments{
+    display: grid;
+    grid-template-columns: 10% 70% 10%;
+    gap: 2%;
+    align-items: center;
+    margin-bottom: 3em;
+}
+.comment-profile>img{
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+}
+.comment-main{
+    display: grid;
+    height: 50px;
+    row-gap: 10px;
+    grid-template-rows: auto auto;
+}
+
+.comment-info{
+    display: grid;
+    grid-template-columns: 20% 20% 15%;
+}
+
+.comment-form{
+    margin: 2em 0;
+}
+
+.user{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+.user > img{
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    border: 2px solid rgb(218, 8, 183);
+    margin-right: 5px;
+}
+.user>a{
+    text-decoration: none;
+    color: #333;
+}
+
+.heart-active{
+    color: red;
+}
